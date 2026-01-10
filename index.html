@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Les Mini-jeux de Loan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="main-title">Les Mini-jeux de Loan</h1>
+
+        <!-- MENU -->
+        <nav class="menu">
+            <button class="game-card active" data-game="mole">Tape Loan</button>
+            <button class="game-card" data-game="breakout">Casse-briques</button>
+            <button class="game-card" data-game="tictactoe">Morpion</button>
+            <button class="game-card" data-game="snake">Snake sushi</button>
+            <button class="game-card" data-game="reaction">Jeu de réflexe</button>
+            <button class="game-card" data-game="target">Test de rapidité</button>
+        </nav>
+    </header>
+
+    <main>
+
+    <!-- ============================================================= -->
+    <!-- =====================  JEU DE LA TAUPE ======================= -->
+    <!-- ============================================================= -->
+
+    <div id="moleGame" class="game-container active" data-theme="arcade">
+        <h2 class="game-title">Tape Loan</h2>
+
+        <div class="game-area">
+            <div id="moleField">
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+                <div class="moleHole"></div>
+            </div>
+        </div>
+
+        <button id="moleStartButton" class="play-btn">Jouer</button>
+
+        <div class="info-panel">
+            <p id="moleScore">Score : 0</p>
+            <p id="moleBestScore">Meilleur Score : 0</p>
+            <p id="moleTimer">Temps restant : 25</p>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================= -->
+    <!-- =====================  CASSE BRIQUES ========================= -->
+    <!-- ============================================================= -->
+
+    <div id="breakoutGame" class="game-container" data-theme="arcade">
+        <h2 class="game-title">Casse-Briques</h2>
+
+        <div class="game-area">
+            <canvas id="breakoutCanvas" width="700" height="450"></canvas>
+        </div>
+
+        <button id="breakoutRestartButton" class="play-btn">Jouer</button>
+
+        <div class="info-panel">
+            <p id="breakoutScore">Score : 0</p>
+            <p id="breakoutBestScore">Meilleur Score : 0</p>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================= -->
+    <!-- =====================  MORPION VS BOT ======================== -->
+    <!-- ============================================================= -->
+
+    <div id="tictactoeGame" class="game-container" data-theme="logic">
+        <h2 class="game-title">Morpion</h2>
+
+        <div class="game-area">
+            <div id="tictactoe-board">
+                <div class="tictactoe-row">
+                    <div class="tictactoe-cell" id="tictactoe-cell-0-0"></div>
+                    <div class="tictactoe-cell" id="tictactoe-cell-0-1"></div>
+                    <div class="tictactoe-cell" id="tictactoe-cell-0-2"></div>
+                </div>
+                <div class="tictactoe-row">
+                    <div class="tictactoe-cell" id="tictactoe-cell-1-0"></div>
+                    <div class="tictactoe-cell" id="tictactoe-cell-1-1"></div>
+                    <div class="tictactoe-cell" id="tictactoe-cell-1-2"></div>
+                </div>
+                <div class="tictactoe-row">
+                    <div class="tictactoe-cell" id="tictactoe-cell-2-0"></div>
+                    <div class="tictactoe-cell" id="tictactoe-cell-2-1"></div>
+                    <div class="tictactoe-cell" id="tictactoe-cell-2-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="play-btn" id="tictactoeStartButton" disabled>Jouer (auto)</button>
+
+        <div class="info-panel">
+            <p id="tictactoe-player-score">Joueur : 0</p>
+            <p id="tictactoe-draw-score">Matchs nuls : 0</p>
+            <p id="tictactoe-bot-score">Bot : 0</p>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================= -->
+    <!-- =======================  SNAKE SUSHI ========================= -->
+    <!-- ============================================================= -->
+
+<div id="snakeGame" class="game-container" data-theme="arcade">
+        <h2 class="game-title">Snake Sushi</h2>
+
+    <div class="game-area">
+        <canvas id="snakeCanvas" width="500" height="500"></canvas>
+    </div>
+
+    <button id="snakeRestartButton" class="play-btn">Jouer</button>
+
+    <div class="info-panel">
+        <p id="snakeScore">Score : 0</p>
+        <p id="snakeBestScore">Meilleur Score : 0</p>
+    </div>
+</div>
+
+
+
+    <!-- ============================================================= -->
+    <!-- =====================  JEU DE RÉFLEXE ======================== -->
+    <!-- ============================================================= -->
+
+    <div id="reactionGame" class="game-container" data-theme="precision">
+        <h2 class="game-title">Jeu de Réflexe</h2>
+
+        <div class="game-area center">
+            <button id="reactionButton" class="play-btn">Prêt ?</button>
+        </div>
+
+        <div class="info-panel">
+            <p id="reactionMessage">Clique quand c'est vert !</p>
+            <p id="reactionResult">Meilleur temps : —</p>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================= -->
+    <!-- ======================  AIM TRAINER ========================== -->
+    <!-- ============================================================= -->
+
+    <div id="targetGame" class="game-container" data-theme="precision">
+        <h2 class="game-title">Test de rapidité</h2>
+
+        <div class="game-area">
+            <canvas id="targetCanvas" width="500" height="500"></canvas>
+        </div>
+
+        <button id="targetStartButton" class="play-btn">Jouer</button>
+
+        <div class="info-panel">
+            <p id="targetScore">Score : 0</p>
+            <p id="targetTime">Temps : 20s</p>
+        </div>
+    </div>
+
+
+
+    <!-- SCRIPTS MODULAIRES -->
+    <!-- Système de navigation -->
+    <script src="js/navigation.js"></script>
+    
+    <!-- Jeux individuels -->
+    <script src="js/games/mole.js"></script>
+    <script src="js/games/breakout.js"></script>
+    <script src="js/games/tictactoe.js"></script>
+    <script src="js/games/snake.js"></script>
+    <script src="js/games/reaction.js"></script>
+    <script src="js/games/aim.js"></script>
+</body>
+
+</html>
