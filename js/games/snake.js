@@ -34,16 +34,14 @@
     let snakeLoop = null;
     let snakeRunning = false;
 
-    updateSnakeScoreDisplay();
-
-    updateSnakeScoreDisplay();
-
     function updateSnakeScoreDisplay() {
         const scoreEl = document.getElementById("snakeScore");
         const bestEl = document.getElementById("snakeBestScore");
         if (scoreEl) scoreEl.textContent = `Score : ${snakeScore}`;
         if (bestEl) bestEl.textContent = `Meilleur Score : ${snakeBest}`;
     }
+
+    updateSnakeScoreDisplay();
 
     function updateSnakeBestScore() {
         if (snakeScore > snakeBest) {
@@ -216,10 +214,9 @@
 
         const replayBtn = document.createElement("button");
         replayBtn.className = "ttt-win-replay-btn";
-        replayBtn.textContent = "Rejouer";
+        replayBtn.textContent = "Continuer";
         replayBtn.addEventListener("click", () => {
             hideSnakeRecordOverlay();
-            startSnakeGame();
         });
 
         card.appendChild(title);
@@ -239,6 +236,8 @@
 
     function hideSnakeRecordOverlay() {
         if (!snakeRecordOverlay) return;
+        snakeRecordOverlay.classList.add("ttt-hidden");
+        snakeRecordOverlay.classList.remove("ttt-show");
         snakeRecordOverlay.style.display = "none";
         if (snakeRecordAnim) {
             cancelAnimationFrame(snakeRecordAnim);
@@ -370,10 +369,9 @@
         const replayBtn = document.createElement("button");
         replayBtn.className = "ttt-win-replay-btn";
         replayBtn.style.background = "linear-gradient(135deg, #f44336, #e57373)";
-        replayBtn.textContent = "Rejouer";
+        replayBtn.textContent = "Continuer";
         replayBtn.addEventListener("click", () => {
             hideSnakeGameOver();
-            startSnakeGame();
         });
 
         card.appendChild(title);
@@ -398,6 +396,8 @@
             if (scoreEl) {
                 scoreEl.textContent = `${snakeScore} points`;
             }
+            snakeRecordOverlay.classList.remove("ttt-hidden");
+            snakeRecordOverlay.classList.add("ttt-show");
             snakeRecordOverlay.style.display = "grid";
             snakeRecordOverlay.style.background = "rgba(255, 255, 255, 0.15)";
             snakeRecordOverlay.style.backdropFilter = "blur(12px)";
@@ -411,6 +411,8 @@
             if (scoreEl) {
                 scoreEl.textContent = `Score: ${snakeScore}`;
             }
+            snakeGameOverOverlay.classList.remove("ttt-hidden");
+            snakeGameOverOverlay.classList.add("ttt-show");
             snakeGameOverOverlay.style.display = "grid";
             snakeGameOverCanvas.width = window.innerWidth;
             snakeGameOverCanvas.height = window.innerHeight;
@@ -421,6 +423,8 @@
 
     function hideSnakeGameOver() {
         if (!snakeGameOverOverlay) return;
+        snakeGameOverOverlay.classList.add("ttt-hidden");
+        snakeGameOverOverlay.classList.remove("ttt-show");
         snakeGameOverOverlay.style.display = "none";
         if (snakeGameOverAnim) {
             cancelAnimationFrame(snakeGameOverAnim);

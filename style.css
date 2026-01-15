@@ -247,12 +247,14 @@ button {
 
 .moleHole.active {
     background-image: url('assets/images/mole/mole.png') !important;
-    background-color: transparent !important;
-    background-size: 140% !important;
+    background-color: #fdd33c !important;
+    background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     box-shadow: 0 0 35px rgba(255, 255, 0, 1), 0 0 60px rgba(255, 150, 0, 0.9), 0 0 0 4px rgba(255, 215, 0, 0.7);
     transform: scale(1.15);
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .moleHole.clicked {
@@ -574,4 +576,306 @@ button {
 .play-btn:active {
     transform: translateY(-1px);
     box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+}
+
+
+/* -------------------------------------------------------
+   MEDIA QUERIES - RESPONSIVE
+--------------------------------------------------------*/
+
+/* Tablettes et petits écrans (max 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    .main-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .menu {
+        gap: 0.4rem;
+        padding: 0 0.5rem;
+    }
+
+    .game-card {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .game-container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .game-area {
+        padding: 0.8rem;
+        min-height: 320px;
+    }
+
+    .info-panel {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    /* Morpion - Réduire la taille des cellules */
+    .tictactoe-cell {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Taupe - Réduire la grille */
+    #moleField {
+        grid-template-columns: repeat(4, 70px);
+        grid-template-rows: repeat(4, 70px);
+        gap: 12px;
+    }
+
+    .moleHole {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Canvas - Adapter la taille */
+    #snakeCanvas,
+    #breakoutCanvas,
+    #targetCanvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #snakeCanvas {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    #breakoutCanvas {
+        width: 100%;
+        max-width: 500px;
+        height: 350px;
+    }
+
+    #targetCanvas {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    /* Boutons */
+    #moleStartButton,
+    #breakoutRestartButton,
+    #snakeRestartButton,
+    #targetStartButton {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+
+    #reactionButton {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* Overlays */
+    .ttt-modal {
+        width: min(90vw, 500px);
+        padding: 16px;
+    }
+
+    .ttt-win-image {
+        height: min(50vh, 400px);
+    }
+
+    .ttt-win-title {
+        font-size: 1.8rem;
+    }
+
+    .ttt-win-replay-btn {
+        padding: 10px 28px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .main-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .menu {
+        gap: 0.3rem;
+    }
+
+    .game-card {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .game-container {
+        padding: 0.5rem;
+    }
+
+    .game-area {
+        padding: 0.5rem;
+        min-height: 280px;
+    }
+
+    /* Morpion - Plus petit pour mobile */
+    .tictactoe-cell {
+        width: 70px;
+        height: 70px;
+    }
+
+    .tictactoe-row {
+        gap: 4px;
+    }
+
+    #tictactoe-board {
+        gap: 4px;
+    }
+
+    /* Taupe - Grille 3x3 pour mobile */
+    #moleField {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 10px;
+    }
+
+    .moleHole {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Cacher les 7 derniers trous pour mobile (garder 9 au lieu de 16) */
+    .moleHole:nth-child(n+10) {
+        display: none;
+    }
+
+    /* Canvas - Encore plus petit */
+    #snakeCanvas {
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
+    }
+
+    #breakoutCanvas {
+        width: 100%;
+        max-width: 380px;
+        height: 280px;
+    }
+
+    #targetCanvas {
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
+    }
+
+    /* Boutons */
+    #moleStartButton,
+    #breakoutRestartButton,
+    #snakeRestartButton,
+    #targetStartButton {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    #reactionButton {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+
+    .play-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    /* Overlays */
+    .ttt-modal {
+        width: 95vw;
+        padding: 12px;
+    }
+
+    .ttt-win-image {
+        height: min(40vh, 300px);
+    }
+
+    .ttt-win-title {
+        font-size: 1.5rem;
+    }
+
+    .ttt-win-replay-btn {
+        padding: 8px 24px;
+        font-size: 1rem;
+        margin-top: 12px;
+    }
+
+    #reactionMessage {
+        font-size: 1rem;
+    }
+
+    #reactionResult {
+        font-size: 0.95rem;
+    }
+}
+
+/* Très petits écrans (max 360px) */
+@media (max-width: 360px) {
+    .main-title {
+        font-size: 1rem;
+    }
+
+    .game-card {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .tictactoe-cell {
+        width: 60px;
+        height: 60px;
+    }
+
+    #moleField {
+        grid-template-columns: repeat(3, 70px);
+        grid-template-rows: repeat(3, 70px);
+        gap: 8px;
+    }
+
+    .moleHole {
+        width: 70px;
+        height: 70px;
+    }
+
+    #snakeCanvas,
+    #targetCanvas {
+        max-width: 280px;
+        height: 280px;
+    }
+
+    #breakoutCanvas {
+        max-width: 320px;
+        height: 240px;
+    }
+}
+
+/* Grands écrans (min 1400px) */
+@media (min-width: 1400px) {
+    .game-container {
+        max-width: 1100px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .game-area {
+        min-height: 500px;
+    }
 }

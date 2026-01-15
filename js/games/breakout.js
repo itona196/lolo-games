@@ -212,14 +212,9 @@
 
         const replayBtn = document.createElement("button");
         replayBtn.className = "ttt-win-replay-btn";
-        replayBtn.textContent = "Rejouer";
+        replayBtn.textContent = "Continuer";
         replayBtn.addEventListener("click", () => {
             hideBreakoutWinOverlay();
-            resetObjects();
-            resetBricks();
-            restartButton.style.display = "none";
-            gameRunning = true;
-            interval = setInterval(update, 16);
         });
 
         card.appendChild(title);
@@ -274,14 +269,9 @@
 
         const replayBtn = document.createElement("button");
         replayBtn.className = "ttt-win-replay-btn";
-        replayBtn.textContent = "Rejouer";
+        replayBtn.textContent = "Continuer";
         replayBtn.addEventListener("click", () => {
             hideBreakoutLoseOverlay();
-            resetObjects();
-            resetBricks();
-            restartButton.style.display = "none";
-            gameRunning = true;
-            interval = setInterval(update, 16);
         });
 
         card.appendChild(title);

@@ -29,7 +29,7 @@ function ensureTTTOverlay() {
         <div class="ttt-modal" role="dialog" aria-modal="true" aria-label="Victoire">
             <img class="ttt-win-image" alt="Victoire" />
             <div class="ttt-win-actions">
-                <button type="button" class="play-btn ttt-replay">Rejouer</button>
+                <button type="button" class="play-btn ttt-replay">Continuer</button>
                 <button type="button" class="play-btn ttt-close">Fermer</button>
             </div>
             <p class="ttt-win-hint">Astuce : remplace sprites/ttt-win.png et sprites/yeah.mp3</p>
@@ -42,8 +42,8 @@ function ensureTTTOverlay() {
         if (e.target === overlay) hideTTTOverlay(false);
     });
 
-    overlay.querySelector(".ttt-close").addEventListener("click", () => hideTTTOverlay(false));
-    overlay.querySelector(".ttt-replay").addEventListener("click", () => hideTTTOverlay(true));
+    overlay.querySelector(".ttt-close").addEventListener("click", () => hideTTTOverlay());
+    overlay.querySelector(".ttt-replay").addEventListener("click", () => hideTTTOverlay());
 
     tttOverlayEl = overlay;
 
@@ -100,18 +100,12 @@ function showTTTWinOverlay() {
     }
 }
 
-function hideTTTOverlay(restart) {
+function hideTTTOverlay() {
     if (!tttOverlayEl) return;
     tttOverlayEl.classList.add("ttt-hidden");
     tttOverlayEl.classList.remove("ttt-show");
     clearTTTConfetti();
-    if (restart) restartTTT();
-}
-
-function updateTTTScores() {
-    pScoreEl.textContent = "Joueur : " + pScore;
-    dScoreEl.textContent = "Matchs nuls : " + dScore;
-    bScoreEl.textContent = "Bot : " + bScore;
+    restartTTT();
 }
 
 const pScoreEl = document.getElementById("tictactoe-player-score");
@@ -119,9 +113,9 @@ const dScoreEl = document.getElementById("tictactoe-draw-score");
 const bScoreEl = document.getElementById("tictactoe-bot-score");
 
 function updateTTTScores() {
-    pScoreEl.textContent = "Joueur : " + pScore;
-    dScoreEl.textContent = "Matchs nuls : " + dScore;
-    bScoreEl.textContent = "Bot : " + bScore;
+    if (pScoreEl) pScoreEl.textContent = "Joueur : " + pScore;
+    if (dScoreEl) dScoreEl.textContent = "Matchs nuls : " + dScore;
+    if (bScoreEl) bScoreEl.textContent = "Bot : " + bScore;
 }
 
 let tttWinOverlay;
@@ -159,10 +153,9 @@ function ensureTttWinUi() {
 
     const replayBtn = document.createElement("button");
     replayBtn.className = "ttt-win-replay-btn";
-    replayBtn.textContent = "Rejouer";
+    replayBtn.textContent = "Continuer";
     replayBtn.addEventListener("click", () => {
         hideTttWinCelebration();
-        restartTTT();
     });
 
     card.appendChild(title);
@@ -288,6 +281,8 @@ function hideTttWinCelebration() {
         audio.pause();
         audio.currentTime = 0;
     });
+    
+    restartTTT();
 }
 
 let tttLoseOverlay = null;
@@ -329,10 +324,9 @@ function ensureTttLoseUi() {
     const replayBtn = document.createElement("button");
     replayBtn.className = "ttt-win-replay-btn";
     replayBtn.style.background = "linear-gradient(135deg, #f44336, #e57373)";
-    replayBtn.textContent = "Rejouer";
+    replayBtn.textContent = "Continuer";
     replayBtn.addEventListener("click", () => {
         hideTttLoseCelebration();
-        restartTTT();
     });
 
     card.appendChild(title);
@@ -376,6 +370,8 @@ function hideTttLoseCelebration() {
         audio.pause();
         audio.currentTime = 0;
     });
+    
+    restartTTT();
 }
 
 let tttDrawOverlay = null;
@@ -417,10 +413,9 @@ function ensureTttDrawUi() {
     const replayBtn = document.createElement("button");
     replayBtn.className = "ttt-win-replay-btn";
     replayBtn.style.background = "linear-gradient(135deg, #9e9e9e, #bdbdbd)";
-    replayBtn.textContent = "Rejouer";
+    replayBtn.textContent = "Continuer";
     replayBtn.addEventListener("click", () => {
         hideTttDrawCelebration();
-        restartTTT();
     });
 
     card.appendChild(title);
@@ -464,6 +459,8 @@ function hideTttDrawCelebration() {
         audio.pause();
         audio.currentTime = 0;
     });
+    
+    restartTTT();
 }
 
 function playDrawSound() {

@@ -72,7 +72,7 @@
 
         const replayBtn = document.createElement("button");
         replayBtn.className = "ttt-win-replay-btn";
-        replayBtn.textContent = "Rejouer";
+        replayBtn.textContent = "Continuer";
         replayBtn.addEventListener("click", () => {
             hideAimOverlay();
         });
